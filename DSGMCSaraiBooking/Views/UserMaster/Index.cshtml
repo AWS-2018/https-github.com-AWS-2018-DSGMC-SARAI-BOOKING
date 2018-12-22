@@ -1,0 +1,162 @@
+﻿@model PageList<BusinessObjects.Common.UserMaster>
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- CONTENT PAGE HEADER -->
+<div class="right_col" role="main">
+    <div class="">
+
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>List of Users</h2>
+                        <ul class="nav navbar-right panel_toolbox">
+                            <button type="button" class="btn btn-dark" onclick="location.href = '@Url.Action("Create", "UserMaster")'">Add New</button>
+                        </ul>
+
+                        <div class="clearfix"></div>
+                    </div>
+
+                    @ViewBag.ErrorMessage
+
+                    @if (Model != null)
+                    {
+                        <div class="x_content">
+                            <table id="datatable" class="table table-striped table-bordered jambo_table">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">
+                                            #
+                                        </th>
+                                        <th>
+                                            Username
+                                        </th>
+
+                                        <th class="text-center">
+                                            Email Id
+                                        </th>
+
+                                        <th class="text-right">
+                                            Mobile No.
+                                        </th>
+
+                                        <th>
+
+                                        </th>
+                                    </tr>
+                                </thead>
+
+                                <tbody>
+
+                                    @foreach (var item in Model.Items)
+                                    {
+                                        <tr class='@(item.IsActive ? "" : "danger")'>
+                                            <td class="text-center">
+                                                @item.SerialNumber.
+                                            </td>
+
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Name)
+                                            </td>
+
+                                            <td class="text-center">
+                                                @Html.DisplayFor(modelItem => item.EmailId)
+                                            </td>
+
+                                            <td class="text-right">
+                                                @Html.DisplayFor(modelItem => item.MobileNo)
+                                            </td>
+
+                                            <td class="text-center">
+
+                                                <div class='hidden-sm hidden-xs'>
+                                                    <a class='btn btn-xs btn-primary' title="Edit Record" href='@Url.Action("Edit", "UserMaster", new { Token = WebSchoolManager.App_Start.Common.EncryptData("ID=" + item.Id.ToString() + "`TABLE_NAME=" + item.DatabaseTableName + "`PAGE_NUMBER=" + ViewBag.PageNumber) })'>
+                                                        <i class='fa fa-edit'></i>
+                                                        Edit
+                                                    </a>
+
+                                                    <a class='btn btn-xs btn-warning' title="View Record" href='@Url.Action("View", "UserMaster", new { Token = WebSchoolManager.App_Start.Common.EncryptData("ID=" + item.Id.ToString() + "`TABLE_NAME=" + item.DatabaseTableName + "`PAGE_NUMBER=" + ViewBag.PageNumber) })'>
+                                                        <i class='fa fa-eye'></i>
+                                                        View
+                                                    </a>
+
+                                                    @if (item.IsActive)
+                                                    {
+                                                        <a class='btn btn-xs btn-danger' title="Disable Record" href='@Url.Action("Disable", "UserMaster", new { Token = WebSchoolManager.App_Start.Common.EncryptData("ID=" + item.Id.ToString() + "`TABLE_NAME=" + item.DatabaseTableName + "`PAGE_NUMBER=" + ViewBag.PageNumber + "`ROW_VERSION=" + item.RowVersion) })'>
+                                                            <i class='fa fa-close'></i>
+                                                            Disable
+                                                        </a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a class='btn btn-xs btn-success' title="Enable Record" href='@Url.Action("Enable", "UserMaster", new { Token = WebSchoolManager.App_Start.Common.EncryptData("ID=" + item.Id.ToString() + "`TABLE_NAME=" + item.DatabaseTableName + "`PAGE_NUMBER=" + ViewBag.PageNumber + "`ROW_VERSION=" + item.RowVersion) })'>
+                                                            <i class='fa fa-check'></i>
+                                                            Enable
+                                                        </a>
+                                                    }
+
+                                                    <a class='btn btn-xs btn-info' title="Reset Password" href='@Url.Action("ResetPassword", "UserMaster", new { Token = WebSchoolManager.App_Start.Common.EncryptData("ID=" + item.Id.ToString() + "`TABLE_NAME=" + item.DatabaseTableName + "`PAGE_NUMBER=" + ViewBag.PageNumber) })'>
+                                                        <i class='fa fa-refresh'></i>
+                                                        Password
+                                                    </a>
+
+                                                    <a class='btn btn-xs btn-dark' title="Menu Settings" href='@Url.Action("MenuSetting", "UserMaster", new { Token = WebSchoolManager.App_Start.Common.EncryptData("ID=" + item.Id.ToString() + "`TABLE_NAME=" + item.DatabaseTableName + "`PAGE_NUMBER=" + ViewBag.PageNumber) })'>
+                                                        <i class='fa fa-filter'></i>
+                                                        Menu
+                                                    </a>
+                                                </div>
+
+                                                <div class='visible-sm visible-xs'>
+                                                    <a class='btn btn-xs btn-primary' title="Edit Record" href='@Url.Action("Edit", "UserMaster", new { Token = WebSchoolManager.App_Start.Common.EncryptData("ID=" + item.Id.ToString() + "`TABLE_NAME=" + item.DatabaseTableName + "`PAGE_NUMBER=" + ViewBag.PageNumber) })'>
+                                                        <i class='fa fa-edit'></i>
+                                                    </a>
+
+                                                    <a class='btn btn-xs btn-warning' title="View Record" href='@Url.Action("View", "UserMaster", new { Token = WebSchoolManager.App_Start.Common.EncryptData("ID=" + item.Id.ToString() + "`TABLE_NAME=" + item.DatabaseTableName + "`PAGE_NUMBER=" + ViewBag.PageNumber) })'>
+                                                        <i class='fa fa-eye'></i>
+                                                    </a>
+
+                                                    @if (item.IsActive)
+                                                    {
+                                                        <a class='btn btn-xs btn-danger' title="Disable Record" href='@Url.Action("Disable", "UserMaster", new { Token = WebSchoolManager.App_Start.Common.EncryptData("ID=" + item.Id.ToString() + "`TABLE_NAME=" + item.DatabaseTableName + "`PAGE_NUMBER=" + ViewBag.PageNumber + "`ROW_VERSION=" + item.RowVersion) })'>
+                                                            <i class='fa fa-close'></i>
+                                                        </a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a class='btn btn-xs btn-success' title="Enable Record" href='@Url.Action("Enable", "UserMaster", new { Token = WebSchoolManager.App_Start.Common.EncryptData("ID=" + item.Id.ToString() + "`TABLE_NAME=" + item.DatabaseTableName + "`PAGE_NUMBER=" + ViewBag.PageNumber + "`ROW_VERSION=" + item.RowVersion) })'>
+                                                            <i class='fa fa-check'></i>
+                                                        </a>
+                                                    }
+
+                                                    <a class='btn btn-xs btn-info' title="Reset Password" href='@Url.Action("ResetPassword", "UserMaster", new { Token = WebSchoolManager.App_Start.Common.EncryptData("ID=" + item.Id.ToString() + "`TABLE_NAME=" + item.DatabaseTableName + "`PAGE_NUMBER=" + ViewBag.PageNumber) })'>
+                                                        <i class='fa fa-refresh'></i>
+                                                    </a>
+
+                                                    <a class='btn btn-xs btn-dark' title="Menu Settings" href='@Url.Action("MenuSetting", "UserMaster", new { Token = WebSchoolManager.App_Start.Common.EncryptData("ID=" + item.Id.ToString() + "`TABLE_NAME=" + item.DatabaseTableName + "`PAGE_NUMBER=" + ViewBag.PageNumber) })'>
+                                                        <i class='fa fa-filter'></i>
+                                                    </a>
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+
+                            @Html.Pagging(Model.Pager, "Index", "UserMaster",0,"","")
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

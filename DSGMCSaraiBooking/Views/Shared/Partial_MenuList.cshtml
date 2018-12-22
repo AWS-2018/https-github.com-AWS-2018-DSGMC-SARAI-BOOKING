@@ -1,0 +1,19 @@
+﻿@*@using WebSchoolManager.Models
+@{
+    List<MenuMaster> list = (new MenuMaster()).MenuList();
+}
+@foreach (MenuMaster menu in @list)
+{
+    
+    <li data-toggle="collapse" data-target=@menu.Id class="collapsed">
+           
+        <a href=@menu.MenuUrl>
+            <i class="fa fa-folder-open fa-fa">
+            </i>
+            &nbsp;
+            @menu.MenuName
+        </a>
+
+    </li>
+    
+}*@

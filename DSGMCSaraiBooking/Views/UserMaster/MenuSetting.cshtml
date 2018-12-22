@@ -1,0 +1,199 @@
+﻿@model BusinessObjects.Common.UserMaster
+
+@{
+    ViewBag.Title = "Menu Setting";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form action="@Url.Action("MenuSetting", "UserMaster")" method="post" data-parsley-validate class="form-horizontal form-label-left">
+    <div class="right_col" role="main">
+        <div class="">
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>User Rights</h2>
+
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("Index", "UserMaster", new { Token = WebSchoolManager.App_Start.Common.EncryptData("`PAGE_NUMBER=" + ViewBag.PageNumber) })'">Back</button>
+                                </li>
+
+                                <li>
+                                    <button type="submit" class="btn btn-success">Save</button>
+                                </li>
+                            </ul>
+
+                            <div class="clearfix"></div>
+                        </div>
+
+                        @ViewBag.ErrorMessage
+
+                        <div class="x_content">
+                            <br />
+
+                            @Html.HiddenFor(model => model.RowVersion)
+                            @Html.HiddenFor(model => model.CheckSumValue)
+                            @Html.HiddenFor(model => model.IsActive)
+                            @Html.HiddenFor(model => model.Id)
+                            @Html.HiddenFor(model => model.GUID)
+
+                            @Html.HiddenFor(model => model.Name)
+                            @Html.HiddenFor(model => model.EmailId)
+                            @Html.HiddenFor(model => model.MobileNo)
+
+                            <input type="hidden" id="hdnPageNumber" name="hdnPageNumber" value="@ViewBag.PageNumber" />
+                            <input type="hidden" id="hdnMenuCount" name="hdnMenuCount" value="@Model.LstChildMenu.Count" />
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Username <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(model => model.Name, new { disabled = "disabled", autocomplete = "off", maxlength = 50, @class = "form-control col-md-7 col-xs-12 text-uppercase" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Email Id <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(model => model.EmailId, new { disabled = "disabled", autocomplete = "off", maxlength = 100, @class = "form-control col-md-7 col-xs-12 text-lowercase" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Mobile No. <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(model => model.MobileNo, new { disabled = "disabled", autocomplete = "off", maxlength = 10, onkeydown = "return PositiveNumsInt(event);", @class = "form-control col-md-7 col-xs-12" })
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>List of Menus</h2>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        @if (Model.LstParentMenu != null)
+                        {
+                            <div class="x_content">
+                                <table id="datatable" class="table table-striped table-bordered jambo_table">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center">
+                                                #
+                                            </th>
+                                            <th>
+                                                Menu
+                                            </th>
+
+                                            <th class="text-center">
+                                                Can Access
+                                            </th>
+
+                                            <th class="text-center">
+                                                Can Create
+                                            </th>
+
+                                            <th class="text-center">
+                                                Can Edit
+                                            </th>
+
+                                            <th class="text-center">
+                                                Can Change Status
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+
+                                    <tbody>
+
+                                        @{int i = 0;}
+                                        @foreach (var parentMenu in Model.LstParentMenu.OrderBy(p => p.MenuSortId))
+                                        {
+                                            foreach(var childMenu in Model.LstChildMenu.Where(p => p.ParentId == parentMenu.ParentId))
+                                            { 
+                                                <tr>
+                                                    <td class="text-center">
+                                                        @{i++;}
+                                                        @i.
+                                                        <input type="hidden" id="hdnMenuId@(i.ToString())" name="hdnMenuId@(i.ToString())" value="@childMenu.MenuId" />
+                                                    </td>
+
+                                                    <td>
+                                                        @parentMenu.ParentName  / @childMenu.MenuName
+                                                    </td>
+
+                                                    <td class="text-center">
+                                                        <div class="checkbox">
+                                                            <label class="">
+                                                                <div class="icheckbox_flat-green checked" style="position: relative;">
+                                                                    <input type="checkbox" class="flat" id="CanAccess@(i.ToString())" name="CanAccess@(i.ToString())" checked="(@childMenu.CanAccess ? 'checked' : '')" style="position:absolute; opacity: 0" />
+                                                                    <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" />
+
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="text-center">
+                                                        <div class="checkbox">
+                                                            <label class="">
+                                                                <div class="icheckbox_flat-green checked" style="position: relative;">
+                                                                    <input type="checkbox" class="flat" id="CanCreate@(i.ToString())" name="CanCreate@(i.ToString())" checked="(@childMenu.CanCreate ? 'checked' : '')" style="position:absolute; opacity: 0" />
+                                                                    <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" />
+
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+
+                                                    <td class="text-center">
+                                                        <div class="checkbox">
+                                                            <label class="">
+                                                                <div class="icheckbox_flat-green checked" style="position: relative;">
+                                                                    <input type="checkbox" class="flat" id="CanEdit@(i.ToString())" name="CanEdit@(i.ToString())" checked="(@childMenu.CanEdit ? 'checked' : '')" style="position:absolute; opacity: 0" />
+                                                                    <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" />
+
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                
+                                                    <td class="text-center">
+                                                        <div class="checkbox">
+                                                            <label class="">
+                                                                <div class="icheckbox_flat-green checked" style="position: relative;">
+                                                                    <input type="checkbox" class="flat" id="CanChangeStatus@(i.ToString())" name="CanChangeStatus@(i.ToString())" checked="(@childMenu.CanChangeStatus ? 'checked' : '')" style="position:absolute; opacity: 0" />
+                                                                    <ins class="iCheck-helper" style="position: absolute; top: 0%; left: 0%; display: block; width: 100%; height: 100%; margin: 0px; padding: 0px; background: rgb(255, 255, 255) none repeat scroll 0% 0%; border: 0px none; opacity: 0;" />
+
+                                                                </div>
+                                                            </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

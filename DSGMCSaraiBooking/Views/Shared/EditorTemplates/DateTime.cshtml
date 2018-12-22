@@ -1,0 +1,28 @@
+@model DateTime
+@using System.Globalization
+
+<input id="@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)" name="@ViewData.TemplateInfo.GetFullHtmlFieldName(string.Empty)" value="@((Model > DateTime.MinValue ? Model : DateTime.Today).ToString(FrameWork.Core.Localizer.CurrentUser.DateFormat))" class = "form-control col-md-3 col-xs-12 text-uppercase"/>
+<script>
+    $(document).ready(function () {
+        @*alert("");
+        $('').daterangepicker({
+            singleDatePicker: true,
+            showDropdowns: true,
+            format: '@FrameWork.Core.Localizer.CurrentUser.DateTimeFormat.ToUpper()',
+            calender_style: "picker_1"
+        }, function (start, end, label) {
+            console.log(start.toISOString(), end.toISOString(), label);
+        });*@
+
+        $('#@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)').daterangepicker({
+            singleDatePicker: true,
+            //timePicker: true,
+            showDropdowns: true,
+            format: '@FrameWork.Core.Localizer.CurrentUser.DateFormat.ToUpper()',
+            calender_style: "picker_1"
+        }, function (start, end, label) {
+            console.log(start.toISOString(), end.toISOString(), label);
+        });
+
+    });
+</script>

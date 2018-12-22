@@ -1,0 +1,34 @@
+﻿@model BusinessObjects.Common.Error
+<html>
+<head>
+    
+</head>
+<body>
+        <div class="modal-header" style="padding-top:5px !important; padding-bottom: 0 !important;">
+            <ul class="nav navbar-left panel_toolbox">
+                <li>
+                    <span class="popup-header-text" style="top:5px;">Error</span>
+                </li>
+            </ul>   
+            <ul class="nav navbar-right panel_toolbox">               
+                <li>
+                    <button type="button" class="btn btn-default btn-sm closeModal" data-dismiss="modal">Close</button>
+                </li>
+                <li>&nbsp;</li>
+            </ul>
+        </div>
+
+        <div class="modal-body" style="padding-top:2px !important;padding-bottom:0 !important;">
+            <div id="divModalLoadErrorAlert">
+                @*@Model.ErrorMessage*@
+            </div>
+        </div>
+
+    <script type="text/javascript">
+        var errorMessage = '@Model.ErrorMessage.Replace("\r\n", "\\r\\n")';
+        $('#divModalLoadErrorAlert').html(ShowModalErrorMessage(errorMessage));
+    </script>
+</body>
+</html>
+
+

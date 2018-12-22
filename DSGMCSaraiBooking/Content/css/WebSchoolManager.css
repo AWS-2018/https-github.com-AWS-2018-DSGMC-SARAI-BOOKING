@@ -1,0 +1,86 @@
+﻿.nav_menu
+{
+    background-color: #0d47a1 !important;
+}
+
+.nav_title
+{
+    background-color: #0d47a1 !important;
+}
+
+.top_nav .nav > li > a:focus, .top_nav .nav > li > a:hover, .top_nav .nav .open > a, .top_nav .nav .open > a:focus, .top_nav .nav .open > a:hover 
+{
+  background: #0d47a1 !important;
+}
+
+.fa-bars
+{
+    color: white !important;
+}
+
+.theme-fore-color
+{
+    color: #0d47a1;
+}
+
+.left_col
+{
+    background: rgb(180, 176, 176) !important;
+    /*border-right :double !important;*/
+}
+
+.nav-md ul.nav.child_menu li:before 
+{
+    background: black !important;
+}
+/*
+.parent_menu
+{
+    background: #0d47a1 !important;
+    color: white !important;
+}
+*/
+
+.menu-star
+{
+    color: black !important;
+}
+
+.nav.side-menu > li > a, .nav.child_menu > li > a 
+{
+    color: black !important;
+}
+
+.profile_info span
+{
+    color: black !important;
+}
+
+.profile_info h2
+{
+    color: #0d47a1 !important;
+}
+
+.profile_info_login span
+{
+    color: black !important;
+}
+
+.img-circle.profile_img
+{
+  background: black;
+}
+
+.main_menu span.fa {
+	color: black !important;
+}
+
+.nav-md ul.nav.child_menu li::after {
+	border-left: 1px solid #808080 !important;
+}
+
+/*
+.nav li.current-page {
+	background: rgba(13, 71, 161, 0.3) !important;
+}
+*/

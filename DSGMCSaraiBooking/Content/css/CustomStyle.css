@@ -1,0 +1,516 @@
+﻿/* Start Table Grid Custom Css */
+
+.tableCustom {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+    .tableCustom > tbody > tr > td, .tableCustom > tbody > tr > th, .tableCustom > tfoot > tr > td, .tableCustom > tfoot > tr > th, .tableCustom > thead > tr > td, .tableCustom > thead > tr > th {
+        padding: 4px 0 4px 0;
+        line-height: 1.42857143;
+        vertical-align: top;
+        border-top: 1px solid #ddd;
+    }
+
+    table.tableCustom thead {
+        background: #CECECE;
+        color: #000;
+    }
+
+    .tableCustom > thead > tr > th {
+        vertical-align: bottom;
+        border-bottom: 2px solid #ddd;
+    }
+
+    .tableCustom > caption + thead > tr:first-child > td, .table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > td, .table > thead:first-child > tr:first-child > th {
+        border-top: 0;
+    }
+
+    .tableCustom > tbody + tbody {
+        border-top: 2px solid #ddd;
+    }
+
+    .tableCustom .tableCustom {
+        background-color: #fff;
+    }
+
+.tableCustom-condensed > tbody > tr > td, .table-condensed > tbody > tr > th, .table-condensed > tfoot > tr > td, .table-condensed > tfoot > tr > th, .table-condensed > thead > tr > td, .table-condensed > thead > tr > th {
+    padding: 5px;
+}
+
+.tableCustom-bordered {
+    border: 1px solid #ddd;
+}
+
+    .tableCustom-bordered > tbody > tr > td, .tableCustom-bordered > tbody > tr > th, .tableCustom-bordered > tfoot > tr > td, .table-bordered > tfoot > tr > th, .table-bordered > thead > tr > td, .table-bordered > thead > tr > th {
+        border: 1px solid #ddd;
+    }
+
+    .tableCustom-bordered > thead > tr > td, .tableCustom-bordered > thead > tr > th {
+        border-bottom-width: 2px;
+    }
+
+.tableCustom-striped > tbody > tr:nth-of-type(odd) {
+    background-color: #f9f9f9;
+}
+
+.tableCustom-hover > tbody > tr:hover {
+    background-color: #f5f5f5;
+}
+
+table col[class*=col-] {
+    position: static;
+    display: table-column;
+    float: none;
+}
+
+table td[class*=col-], table th[class*=col-] {
+    position: static;
+    display: table-cell;
+    float: none;
+}
+
+.tableCustom > tbody > tr.active > td, .table > tbody > tr.active > th, .table > tbody > tr > td.active, .table > tbody > tr > th.active, .table > tfoot > tr.active > td, .table > tfoot > tr.active > th, .table > tfoot > tr > td.active, .table > tfoot > tr > th.active, .table > thead > tr.active > td, .table > thead > tr.active > th, .table > thead > tr > td.active, .table > thead > tr > th.active {
+    background-color: #f5f5f5;
+}
+
+.tableCustom-hover > tbody > tr.active:hover > td, .tableCustom-hover > tbody > tr.active:hover > th, .tableCustom-hover > tbody > tr:hover > .active, .tableCustom-hover > tbody > tr > td.active:hover, .tableCustom-hover > tbody > tr > th.active:hover {
+    background-color: #e8e8e8;
+}
+
+.tableCustom > tbody > tr.success > td, .tableCustom > tbody > tr.success > th, .tableCustom > tbody > tr > td.success, .tableCustom > tbody > tr > th.success, .tableCustom > tfoot > tr.success > td, .tableCustom > tfoot > tr.success > th, .tableCustom > tfoot > tr > td.success, .tableCustom > tfoot > tr > th.success, .tableCustom > thead > tr.success > td, .tableCustom > thead > tr.success > th, .tableCustom > thead > tr > td.success, .tableCustom > thead > tr > th.success {
+    background-color: #dff0d8;
+}
+
+.tableCustom-hover > tbody > tr.success:hover > td, .tableCustom-hover > tbody > tr.success:hover > th, .tableCustom-hover > tbody > tr:hover > .success, .tableCustom-hover > tbody > tr > td.success:hover, .tableCustom-hover > tbody > tr > th.success:hover {
+    background-color: #d0e9c6;
+}
+
+.tableCustom > tbody > tr.info > td, .tableCustom > tbody > tr.info > th, .tableCustom > tbody > tr > td.info, .tableCustom > tbody > tr > th.info, .tableCustom > tfoot > tr.info > td, .tableCustom > tfoot > tr.info > th, .tableCustom > tfoot > tr > td.info, .tableCustom > tfoot > tr > th.info, .tableCustom > thead > tr.info > td, .tableCustom > thead > tr.info > th, .tableCustom > thead > tr > td.info, .tableCustom > thead > tr > th.info {
+    background-color: #d9edf7;
+}
+
+.tableCustom-hover > tbody > tr.info:hover > td, .tableCustom-hover > tbody > tr.info:hover > th, .tableCustom-hover > tbody > tr:hover > .info, .tableCustom-hover > tbody > tr > td.info:hover, .tableCustom-hover > tbody > tr > th.info:hover {
+    background-color: #c4e3f3;
+}
+
+.tableCustom > tbody > tr.warning > td, .tableCustom > tbody > tr.warning > th, .tableCustom > tbody > tr > td.warning, .tableCustom > tbody > tr > th.warning, .tableCustom > tfoot > tr.warning > td, .tableCustom > tfoot > tr.warning > th, .tableCustom > tfoot > tr > td.warning, .tableCustom > tfoot > tr > th.warning, .tableCustom > thead > tr.warning > td, .tableCustom > thead > tr.warning > th, .tableCustom > thead > tr > td.warning, .tableCustom > thead > tr > th.warning {
+    background-color: #fcf8e3;
+}
+
+.table-hover > tbody > tr.warning:hover > td, .table-hover > tbody > tr.warning:hover > th, .table-hover > tbody > tr:hover > .warning, .table-hover > tbody > tr > td.warning:hover, .table-hover > tbody > tr > th.warning:hover {
+    background-color: #faf2cc;
+}
+
+.tableCustom > tbody > tr.danger > td, .tableCustom > tbody > tr.danger > th, .tableCustom > tbody > tr > td.danger, .tableCustom > tbody > tr > th.danger, .tableCustom > tfoot > tr.danger > td, .tableCustom > tfoot > tr.danger > th, .tableCustom > tfoot > tr > td.danger, .tableCustom > tfoot > tr > th.danger, .tableCustom > thead > tr.danger > td, .tableCustom > thead > tr.danger > th, .tableCustom > thead > tr > td.danger, .tableCustom > thead > tr > th.danger {
+    /*background-color: #f2dede;*/
+    background-color: #f37e7e;
+}
+
+.tableCustom > tbody > tr > td > input.disableText   {
+    background-color: #F3E4E4 !important;
+}
+
+.tableCustom > tbody > tr > td > input.disableLabelText   {
+    background-color: #ffffff;
+    border: 0px;
+}
+
+#myTabContent input[type="text"].disableText   {
+    background-color: #F3E4E4 !important;
+}
+
+#myTabContent input[type="text"].disableLabelText   {
+    background-color: #ffffff !important;
+    border: 0px !important;
+    box-shadow: none !important;
+}
+
+.tableCustom > tbody > tr > td > input   {
+    padding: 1px 1px !important;
+    margin: 2px auto !important;
+}
+
+.tableCustom-hover > tbody > tr.danger:hover > td, .tableCustom-hover > tbody > tr.danger:hover > th, .tableCustom-hover > tbody > tr:hover > .danger, .tableCustom-hover > tbody > tr > td.danger:hover, .tableCustom-hover > tbody > tr > th.danger:hover {
+    background-color: #ebcccc;
+}
+
+.table-responsive {
+    min-height: .01%;
+    overflow-x: auto;
+}
+
+
+.tableCustom > tbody > tr > td
+{
+    padding: 0 0 0 4px !important;
+    vertical-align: middle !important;
+}
+
+/*End Table Grid Custom Css*/
+
+/* Start Custom Tabs */
+
+/** Tabs **/
+ul.bar_tabs_custom {
+  overflow: visible;
+  background: #F5F7FA;
+  height: 14px;
+  margin: 21px 0 14px;
+  padding-left: 5px;
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  border-bottom: 1px solid #E6E9ED; }
+
+ul.bar_tabs_custom > li {
+  border: 1px solid #E6E9ED;
+  color: #333 !important;
+  margin-top: -17px;
+  margin-left: 8px;
+  background: #fff;
+  border-bottom: none;
+  border-radius: 4px 4px 0 0; }
+
+ul.bar_tabs_custom > li.active {
+  border-right: 6px solid #D3D6DA;
+  border-top: 0;
+  margin-top: -15px; }
+
+ul.bar_tabs_custom > li a {
+  padding: 5px 8px;
+  background: #DEDEDE;
+  margin: 0;
+  border-top-right-radius: 0; 
+  color:#454545;
+}
+
+ul.bar_tabs_custom > li a:hover {
+  border: 1px solid transparent; }
+
+ul.bar_tabs_custom > li.active a {
+  border-bottom: none; }
+
+ul.bar_tabs_custom.right {
+  padding-right: 14px; }
+
+ul.bar_tabs_custom.right li {
+  float: right; }
+
+a:focus {
+  outline: none; }
+
+/** /Tabs **/
+
+/* End Custom Tabs*/
+
+
+.table > tbody > tr > td {
+    padding: 2px !important;
+    vertical-align: middle !important;
+}
+
+.SortTableHead
+{
+    color: #000 !important;
+}
+
+.btn-payroll-setting
+{
+    width: 200px;
+}
+
+.required
+{
+    color: red !important;
+}
+
+.badge-calendar {
+    display: inline-block;
+    min-width: 26px;
+    min-height: 26px;
+    padding: 6px 6px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #6b6262;
+    border-radius: 50%;
+}
+
+
+
+.countdown .wrap {
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 310px;
+}
+
+.countdown a {
+  text-decoration: none;
+  color: #1a1a1a;
+}
+
+.countdown h1 {
+  margin-bottom: 60px;
+  text-align: center;
+  font: 300 2.25em "Lato";
+  text-transform: uppercase;
+}
+.countdown h1 strong {
+  font-weight: 400;
+  color: #ea4c4c;
+}
+
+.countdown h2 {
+  margin-bottom: 80px;
+  text-align: center;
+  font: 300 0.7em "Lato";
+  text-transform: uppercase;
+}
+.countdown h2 strong {
+  font-weight: 400;
+}
+
+.countdown {
+  width: 230px;
+  margin: 0 auto;
+}
+.countdown .bloc-time {
+  float: left;
+  margin-right: 20px;
+  text-align: center;
+  margin-top:14px;
+}
+.countdown .bloc-time:last-child {
+  margin-right: 0;
+}
+.countdown .count-title {
+  display: block;
+  margin-bottom: 2px;
+  font: normal 0.94em "Lato";
+  color: #1a1a1a;
+  text-transform: uppercase;
+}
+.countdown .figure {
+  position: relative;
+  float: left;
+  height: 30px;
+  width: 25px;
+  margin-right: 10px;
+  background-color: #fff;
+  border-radius: 8px;
+  -moz-box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2), inset 2px 4px 0 0 rgba(255, 255, 255, 0.08);
+  -webkit-box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2), inset 2px 4px 0 0 rgba(255, 255, 255, 0.08);
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.2), inset 2px 4px 0 0 rgba(255, 255, 255, 0.08);
+}
+.countdown .figure:last-child {
+  margin-right: 0;
+}
+.countdown .figure > span {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  font: normal 1.4em/28px "Lato";
+  font-weight: 700;
+  color: #de4848;
+}
+.countdown .figure .top:after, .countdown .figure .bottom-back:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.countdown .figure .top {
+  z-index: 3;
+  background-color: #f7f7f7;
+  transform-origin: 50% 100%;
+  -webkit-transform-origin: 50% 100%;
+  -moz-border-radius-topleft: 10px;
+  -webkit-border-top-left-radius: 10px;
+  border-top-left-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  -webkit-border-top-right-radius: 10px;
+  border-top-right-radius: 10px;
+  -moz-transform: perspective(200px);
+  -ms-transform: perspective(200px);
+  -webkit-transform: perspective(200px);
+  transform: perspective(200px);
+}
+.countdown .figure .bottom {
+  z-index: 1;
+}
+.countdown .figure .bottom:before {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+.countdown .figure .bottom-back {
+  z-index: 2;
+  top: 0;
+  height: 50%;
+  overflow: hidden;
+  background-color: #f7f7f7;
+  -moz-border-radius-topleft: 10px;
+  -webkit-border-top-left-radius: 10px;
+  border-top-left-radius: 10px;
+  -moz-border-radius-topright: 10px;
+  -webkit-border-top-right-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.countdown .figure .bottom-back span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+.countdown .figure .top, .countdown .figure .top-back {
+  height: 50%;
+  overflow: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+.countdown .figure .top-back {
+  z-index: 4;
+  bottom: 0;
+  background-color: #fff;
+  -webkit-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+  -moz-transform: perspective(200px) rotateX(180deg);
+  -ms-transform: perspective(200px) rotateX(180deg);
+  -webkit-transform: perspective(200px) rotateX(180deg);
+  transform: perspective(200px) rotateX(180deg);
+  -moz-border-radius-bottomleft: 10px;
+  -webkit-border-bottom-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  -moz-border-radius-bottomright: 10px;
+  -webkit-border-bottom-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+.countdown .figure .top-back span {
+  position: absolute;
+  top: -100%;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.inline-text{
+    display:inline;
+}
+
+.fixed-width-anchor-text
+{
+    width:100px;
+    font-size: 12px;
+    max-width:100px;
+    overflow:hidden;
+    margin: auto 5px;
+}
+
+.popup-header-text 
+{
+    font-weight:bold;
+    font-size:14px;
+    position:relative;
+    top:2px;
+}
+
+
+.table {
+    margin-bottom: 10px !important;
+}
+
+.pagination {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+.btn {
+	margin-bottom: 2px !important;
+	margin-top: 2px !important;
+}
+
+.blueLine {
+    position:relative; 
+    clear:both;
+    float:left;
+    width:100%; 
+    border-top: 2px solid #0594cc;
+    margin: 2px auto 6px auto;
+}
+
+.nav-tabs-blue > li.active > a, .nav-tabs-blue > li.active > a:focus, .nav-tabs-blue > li.active > a:hover {
+    color: #ffffff !important;
+    cursor: default;
+    background-color: #0594cc;
+    border: 1px solid #ddd;
+    border-right-color: rgb(221, 221, 221);
+    border-bottom-color: rgb(221, 221, 221);
+    border-bottom-color: transparent;
+}
+
+.panel-heading-small {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+.orangeHead {
+    color: #ff6a00 !important;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.greyBackground {
+    background-color:#CECECE !important;
+}
+
+.totalBackground {
+    background-color: black;
+    color:white;
+    font-weight:bold;
+}
+
+.error {
+    color: #ff0000;
+}
+
+
+.v-select .dropdown-toggle {
+    -moz-border-radius: 0 !important;
+    -webkit-border-radius: 0 !important;
+    border-radius: 0 !important;
+}
+.dropdown v-select single searchable {
+    height: 33px !important;
+}
+.v-select .open-indicator {
+    bottom: 3px !important;
+}
+.v-select .dropdown-toggle .clear
+{
+    bottom:-3px !important;
+    right:21px !important;
+    display:none !important;
+}

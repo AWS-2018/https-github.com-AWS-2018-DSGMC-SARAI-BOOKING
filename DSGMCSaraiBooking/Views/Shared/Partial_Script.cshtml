@@ -1,0 +1,144 @@
+﻿<!--Script Start here-->
+
+<script>
+    window.onload = function () {
+        function setHeight() {
+            windowHeight = $(window).innerHeight();
+            //$('.section-height').css('min-height', windowHeight);
+        };
+        setHeight();
+
+        $(window).resize(function () {
+            setHeight();
+        });
+        $(function () {
+            $('.nav-side-menu').on('click', 'ul>li', function () {
+                if (!$(this).hasClass('active')) {
+                    $('.nav-side-menu li').removeClass('active');
+                    $(this).addClass('active');
+                }
+            })
+        })
+        $(function () {
+            $('.sub-menu').on('click', 'li', function () {
+                if (!$(this).hasClass('active')) {
+                    $('.sub-menu li').removeClass('active');
+                    $(this).addClass('active');
+                }
+            })
+        })
+    };
+ </script>
+
+<script>
+    $(document).ready(function () {
+        $("table tbody tr").each(function (i, row) {
+            var $actualRow = $(row);
+            if ($actualRow.find('input[type=checkbox]').prop('checked') == true)
+            {
+                $actualRow.css('background-color', '#f5f5f5');
+            }
+            else
+            {
+                $actualRow.css('background-color', '#fff');
+            }
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+</script>
+
+<script type="text/javascript">
+   
+
+    @*numeric Textbox only*@
+
+    $(document).ready(function () {
+        $(".digit").keypress(function (e) {
+            if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+                $("#errormsg").html("Numeric Digits Only").show().fadeOut("slow");
+                return false;
+            }
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        //$("#InstitutionId").change(function () {           
+        //        var options = {};
+        //        options.url = "/DriverMaster/GetCityByStateMasterId";
+        //        options.type = "POST";
+        //        options.data = JSON.stringify({ StateMasterId: $("#StateMasterId").val() });
+        //        options.dataType = "json";
+        //        options.contentType = "application/json";
+        //        options.success = function (states) {
+        //            $("#CityMasterId").empty();
+        //            for (var i = 0; i < states.length; i++) {
+        //                $("#CityMasterId").append("<option value=" + states[i].Id + ">" + states[i].NAME + "</option>");
+        //            }
+        //            $("#CityMasterId").prop("disabled", false);
+        //        };
+        //        options.error = function () { alert("Error retrieving states!"); };
+        //        $.ajax(options);
+            
+        //});
+
+        var ID = 2;
+        function addRow() {
+            var TableRow = $("#Table1 tr").length;
+            $("#RowCount").val(TableRow);
+            var html = '<tr>' +
+                        '<td><input id="LicenceNo' + ID + '" value="" class="form-control" name="LicenceNo' + ID + '"></td>' +
+                        '<td><input id="LicenceExpiryDate' + ID + '" type="text" class="datepicker form-control" name="LicenceExpiryDate' + ID + '"></td>' +
+                        '<td><span class="BtnPlus btn btn-entry glyphicon glyphicon-plus"></span></td>' +
+                        '<td><span class="BtnMinus btn btn-entry glyphicon glyphicon-minus"></span></td>' +
+                        '</tr>'
+            $(html).appendTo($("#Table1"))
+            ID++;
+            $(".datepicker").datepicker({
+                dateFormat: "dd/mm/yy",
+            });
+            $(".datepicker").datepicker("refresh");
+        };
+        $("#Table1").on("click", ".BtnPlus", addRow);
+
+        function deleteRow() {
+
+            if ($(".table tr").length != 2) {
+                var par = $(this).parent().parent();
+                par.remove();
+                var TableRow = $("#RowCount").val();
+                $("#RowCount").val(parseInt(TableRow) - 1);
+            }
+        };
+        $("#Table1").on("click", ".BtnMinus", deleteRow);
+
+
+    });
+
+    $(function () {
+        $(".datepicker").datepicker(
+            {
+                dateFormat: "dd/mm/yy",
+            }
+            );
+    });
+
+    $('#addemployee').on('click', function () {
+        $.ajax({
+            async: false,
+            url: '/DriverMaster/AddNewDriverLicence'
+        }).success(function (partialView) {
+            $('#new-Employee').append(partialView);
+        });
+    });
+</script>
+
+
+    <!--Script Ended here-->

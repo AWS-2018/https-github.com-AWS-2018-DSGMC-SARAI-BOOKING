@@ -1,0 +1,50 @@
+﻿<!--Top NavBar Start-->
+@Html.Partial("Partial_Html_HeadSection")
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>*@
+@Html.Partial("Partial_Script")
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">
+                <i class="glyphicon glyphicon-education"></i>
+                SCHOOL MANAGER
+            </a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right navbar-right-padd">
+                <li class="dropdown btn-group">
+                    <a class="dropdown-toggle dropdown-menu-left" data-toggle="dropdown" href="#">
+                        <span class="glyphicon glyphicon-user"></span> Admin
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#"><span class="glyphicon glyphicon-wrench"></span> Profile</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown btn-group">
+                    <a class="dropdown-toggle dropdown-menu-left" data-toggle="dropdown" href="#">
+                        <span class="glyphicon glyphicon-user"></span> Manish Aggarwal
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href=" #"><span class="glyphicon glyphicon-wrench"></span> Profile</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-check"></span> Change Password</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-asterisk"></span> Manage Application</a></li>
+                        <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> LogOut</a></li>
+                    </ul>
+                </li>                
+
+        </ul>
+    </div>
+    </div>
+</nav>
+
+<!--Top NavBar Ended-->

@@ -1,0 +1,65 @@
+﻿@media print,screen {
+    @page {
+        size:auto;
+        margin:0;
+    }
+    * {
+        font-family:Arial !important;
+        color:#000;
+    }
+   
+    h2
+    {
+    margin:0;
+    padding:0;
+    /*font-family:Arial;*/
+    }
+    h3
+    {
+    margin:10px 0;
+    padding:0;
+    /*font-family:Arial, Helvetica, sans-serif;*/
+    /*font-size:13px;*/
+    font-weight:normal;
+    }
+    p
+    {
+        margin:5px 0;
+        padding:0;
+        /*font-family:Arial, Helvetica, sans-serif;*/
+        /*font-size:12pt !important;*/
+        font-weight:normal;
+        }
+    .small
+    {
+    padding:5px 0px 0px 5px;
+        /*font-family:Arial, Helvetica, sans-serif;*/
+        font-size:6pt !important;
+        font-weight:normal;
+    }
+    .table-style {
+        border:solid 1px #000;
+    }
+    .pad-10{padding:5px 10px;}
+    table.pad-10 tr td strong, table.pad-10 tr td 
+    {
+        /*font-family:Arial, Helvetica, sans-serif;*/
+        /*font-size: 12pt !important;*/
+    }
+    table.mainTable tr td strong, table.mainTable tr td  {
+        font-size: 10pt !important;
+    }
+    table.table-row tr td{ font-size: 12pt !important; border-bottom:solid 1px #9e9e9e; padding-right:5px;}
+    /*table.table-row tr th{ font-size: 12pt !important; padding:3px 0 3px 0; border-top:solid 2px #000; border-bottom:solid 2px #000; padding-right:5px;}*/
+    .float-left{float:left; position:absolute;}
+    body {
+	    margin-left: 0px;
+	    margin-top: 0px;
+	    margin-right: 0px;
+	    margin-bottom: 0px;
+        /*font-size:12px;*/
+        /*font-family: Arial;*/
+    }
+    .dashed-line{border-bottom:dashed 1px #333; height:5px !important;}
+}
+

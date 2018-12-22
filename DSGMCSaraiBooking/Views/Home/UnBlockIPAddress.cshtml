@@ -1,0 +1,52 @@
+﻿@{
+    ViewBag.Title = "UnBlock IP Address";
+    Layout = "~/Views/Shared/_LoginLayout.cshtml";
+}
+
+<!-- Bootstrap -->
+<link href="~/Content/css/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Font Awesome -->
+<link href="~/Content/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+<!-- NProgress -->
+<link href="~/Content/css/nprogress/nprogress.css" rel="stylesheet">
+<!-- Animate.css -->
+<link href="~/Content/css/animate.css/animate.min.css" rel="stylesheet">
+<!-- Custom Theme Style -->
+<link href="~/Content/css/build/css/custom.min.css" rel="stylesheet" />
+<script src="~/Content/css/jquery/dist/jquery.min.js"></script>
+
+<br/><br/><br/>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="outermost-div">
+                <div class="inner-div">
+                    <div class="centered-div">
+                        @ViewBag.ErrorMessage
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>    
+</div>
+
+<style>
+    .outermost-div{
+        overflow:hidden;    
+    }
+
+    .inner-div{
+       float:left;
+       position: relative;
+       left:50%;
+    
+    }
+
+    .centered-div{    
+        float:left;
+        position: relative;
+        left: -50% ;
+        width: auto;
+    }
+</style>
+

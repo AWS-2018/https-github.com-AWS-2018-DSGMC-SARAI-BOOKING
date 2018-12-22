@@ -1,0 +1,596 @@
+﻿<!DOCTYPE html>
+@*@using SaraiBooking.Models*@
+@{
+    string removeFromFavMenuText = "Click here to Remove this menu from Favorite List.";
+    string addToFavMenuText = "Click here to Add this menu into Favorite List.";
+}
+<html>
+@*---- Head Start--- *@
+<head>
+    <title>@FrameWork.Core.Localizer.ProjectTitle</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="~/favicon.ico" rel="logo" />
+
+    <link href="~/Content/css/SaraiBooking.css" rel="stylesheet" />
+
+    <!-- Bootstrap -->
+    <link href="~/Content/css/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="~/Content/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="~/Content/css/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="~/Content/css/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="~/Content/css/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="~/Content/css/select2/dist/css/select2.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="~/Content/css/switchery/dist/switchery.min.css" rel="stylesheet">
+    <!-- starrr -->
+    <link href="~/Content/css/starrr/dist/starrr.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="~/Content/css/build/css/custom.css" rel="stylesheet" />
+
+    <!-- Custom Changes -->
+    <link href="~/Content/css/CustomStyle.css" rel="stylesheet" />
+
+    <!-- Jquery Image Crop -->
+    <link href="~/Content/jquery.Jcrop.min.css" rel="stylesheet" />
+
+    <link href="~/Content/side-slider.css" rel="stylesheet" type="text/css" media="screen">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/js/fancybox/jquery.fancybox.css" media="screen" />
+
+    <link href="~/Content/jquery-editable-select.min.css" rel="stylesheet" />
+
+    <link href="~/Content/css/picktim.css" rel="stylesheet" />
+    <link href="~/Content/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+
+    <link href="~/Content/css/jquery-ui-1.12.1/jquery-ui.min.css" rel="stylesheet" />
+
+    <script src="~/Content/css/jquery/dist/jquery.min.js"></script>
+    <script src="~/Content/css/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+
+
+    <!-- angular -->
+    <script src="@Url.Content("~/Scripts/angular.min.js")"></script>
+    <script src="@Url.Content("~/Scripts/angular-animate.min.js")"></script>
+
+    <script src="~/Content/js/vue.js"></script>
+
+    <!-- use the latest release -->
+    <script src="https://unpkg.com/vue-select@latest"></script>
+
+    <script>
+        var applicationDateFormat = '@FrameWork.Core.Localizer.CurrentUser.DateFormat.ToUpper()';
+        var applicationDigitAfterDecimalAmount = '@FrameWork.Core.Localizer.CurrentUser.DigitAfterDecimalAmount';
+        var applicationChangeConfirmationMessage = '@SaraiBooking.App_Start.Common.ChangeConfirmationMessage';
+    </script>
+
+
+    <script src="~/Content/vue/common.js"></script>
+
+    <script>
+        var app = angular.module("SaraiBooking", ['ngAnimate']);
+    </script>
+
+
+    <style>
+        .star {
+            font-size: 12px;
+            /*color: gold;*/
+            margin: 12px 20px auto;
+        }
+
+        .nav > li > a.menu-link-1 {
+            display: inline-block;
+        }
+
+        .nav > li > a.menu-link-2 {
+            display: inline-block;
+            float: right;
+            padding: 0;
+        }
+    </style>
+
+    @*<style>
+            .modal-content {
+                width: 1000px !important;
+                margin: 30px auto !important;
+            }
+        </style>*@
+
+</head>
+
+<body class="nav-md" ng-app="SaraiBooking">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a href="@Url.Action("About", "AboutUs", new { area = "" })" class="site_title"><i class="fa fa-graduation-cap"></i> <span>@FrameWork.Core.Localizer.CurrentUser.CurrentModuleName</span></a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <!-- menu profile quick info -->
+                    <div class="profile">
+                        <div class="profile_pic">
+                            <img src="~/images/pic.jpg" alt="..." class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Welcome,</span>
+                            <h2>@FrameWork.Core.Localizer.CurrentUser.Name</h2>
+                        </div>
+
+                        @if (FrameWork.Core.Localizer.CurrentUser.LastLogInDateTime > new DateTime(1900, 4, 1))
+                        {
+                            <div class="profile_info_login">
+                                <span style="letter-spacing: -0.3px !important">Last Login on @FrameWork.Core.Localizer.CurrentUser.LastLogInDateTime.ToString("MMM dd, yyyy HH:mm:ss")</span>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                            <h3>&nbsp;</h3>
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a class="parent_menu" style="color: white !important"><i class=""></i>Rooms Availability <span class="fa fa-chevron-down"></span></a>
+
+                                    <ul class="nav child_menu" style="display: block;">
+                                        <li class="current-page"><a href="@Url.Action("RoomAvailability", "Rooms", new {  Token = SaraiBooking.App_Start.Common.EncryptData("`PAGE_NUMBER=1`MENU_ID=101") })" , class="menu-link-1">Rooms Availability</a></li>
+                                    </ul>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="Favorite Menus" href="@Url.Action("FavoriteMenus", "UserMaster", new { area = "Common", Token = SaraiBooking.App_Start.Common.EncryptData("ID=" + FrameWork.Core.Localizer.CurrentUser.Id) })">
+                            <span class="fa fa-bookmark" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Settings" href="@Url.Action("Settings", "UserMaster", new { area = "Common" })">
+                            <span class="fa fa-gear" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Change Password" href="@Url.Action("ResetPassword", "UserMaster", new { area = "Common", Token = SaraiBooking.App_Start.Common.EncryptData("ID=" + FrameWork.Core.Localizer.CurrentUser.Id + "`PAGE_NUMBER=-1") })">
+                            <span class="fa fa-key" aria-hidden="true"></span>
+                        </a>
+                        <a href="@Url.Action("LogOut", "Home", new { area = "" })" data-toggle="tooltip" data-placement="top" title="Logout">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+            <!-- top navigation -->
+            <div class="top_nav">
+                <div class="nav_menu">
+                    <nav>
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+
+                        <div class="InstituteName hidden-xs">
+                            @*<b>@FrameWork.Core.Localizer.CurrentInstitute.BranchName</b>*@
+                        </div>
+
+                        <div class="InstituteName visible-xs">
+                            @*<b>@FrameWork.Core.Localizer.CurrentInstitute.InstituteCode</b>*@
+                        </div>
+
+                        <div class="countdown">
+                            <div class="bloc-time min" id="divMinutes" data-init-value="@Session.Timeout">
+                                <div class="figure min min-1">
+                                    <span class="top">6</span>
+                                    <span class="top-back">
+                                        <span>6</span>
+                                    </span>
+                                    <span class="bottom">6</span>
+                                    <span class="bottom-back">
+                                        <span>6</span>
+                                    </span>
+                                </div>
+                                <div class="figure min min-2">
+                                    <span class="top">0</span>
+                                    <span class="top-back">
+                                        <span>0</span>
+                                    </span>
+                                    <span class="bottom">0</span>
+                                    <span class="bottom-back">
+                                        <span>0</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="bloc-time sec" data-init-value="0">
+                                <div class="figure sec sec-1">
+                                    <span class="top">0</span>
+                                    <span class="top-back">
+                                        <span>0</span>
+                                    </span>
+                                    <span class="bottom">0</span>
+                                    <span class="bottom-back">
+                                        <span>0</span>
+                                    </span>
+                                </div>
+                                <div class="figure sec sec-2">
+                                    <span class="top">0</span>
+                                    <span class="top-back">
+                                        <span>0</span>
+                                    </span>
+                                    <span class="bottom">0</span>
+                                    <span class="bottom-back">
+                                        <span>0</span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li class="">
+                                <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    <img src="~/images/pic.jpg" alt="">
+                                    <span class="hidden-xs">@FrameWork.Core.Localizer.CurrentUser.Name</span>
+                                    <span class="fa fa-angle-down"></span>
+                                </a>
+
+                                <ul class="dropdown-menu dropdown-usermenu pull-right">
+                                    <li>
+                                        <a href="@Url.Action("FavoriteMenus", "UserMaster", new { area = "Common", Token = SaraiBooking.App_Start.Common.EncryptData("ID=" + FrameWork.Core.Localizer.CurrentUser.Id) })">
+                                            <i class="fa fa-bookmark pull-right"></i> Favorites
+                                        </a>
+                                    </li>
+
+                                    <li>
+                                        <a href="@Url.Action("Settings", "UserMaster", new { area = "Common" })">
+                                            <i class="fa fa-gear pull-right"></i> Settings
+                                        </a>
+                                    </li>
+
+                                   
+
+                                    
+
+                                    <li>
+                                        <a href="@Url.Action("ResetPassword", "UserMaster", new { area = "Common", Token = SaraiBooking.App_Start.Common.EncryptData("ID=" + FrameWork.Core.Localizer.CurrentUser.Id + "`PAGE_NUMBER=-1") })">
+                                            <i class="fa fa-key pull-right"></i> Change Password
+                                        </a>
+                                    </li>
+
+                                    @*<li>
+                                            <a href="@Url.Action("Create", "Issues", new { area = "Common", Token = SaraiBooking.App_Start.Common.EncryptData("`MENU_ID=9899`PAGE_NUMBER=-1") })">
+                                                <i class="fa fa-bug pull-right"></i> Report Bug
+                                            </a>
+                                        </li>*@
+
+                                    <li><a href="@Url.Action("LogOut", "Home", new { area = "" })"><i class="glyphicon glyphicon-off pull-right"></i> Log Out</a></li>
+                                </ul>
+                            </li>
+                       
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- /top navigation -->
+            <!-- Left Side Navigation (Vertical Multilevel Menu )-->
+            <div class="main-content" id="main-content">
+
+
+
+                <div id="loader" style="margin: 0px; padding: 0px; position: fixed; right: 0px;
+                    top: 0px; width: 100%; height: 100%; background-color: #666666; z-index: 30001;
+                    opacity: .8; filter: alpha(opacity=70);display:none">
+                    <p style="position: absolute;color:white;left: 50%;top: 50%;-webkit-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">
+                        <img src="~/Content/Images/ajax-loader.gif">&nbsp;&nbsp;&nbsp;<span id="loaderText"><b>Loading...</b></span>
+                    </p>
+                </div>
+
+                @RenderBody()
+            </div>
+
+            <!-- -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-left">
+                    @*<b> @FrameWork.Core.Localizer.CurrentFinYear.FinYearDesc </b>*@
+                </div>
+
+                <div class="pull-right">
+                    © <i class="fa fa-graduation-cap"></i> <b> Web School Manager</b> by <a href="http://www.akaalwebsoft.com" target="_blank" class="hyperlink">Akaal WebSoft Pvt. Ltd.</a>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+
+
+
+
+    <div class="sideslider" id="sideslider" style="margin-left: -265px;">
+        <div class="sideslider-tab"> Favorite Menus </div>
+        <div class="sideslider-close sideslider-close_en"><img src="~/images/Close.png" /></div>
+        <div id="sideslider-smartbutton">
+            <div id="sideslider-text">
+                @foreach (BusinessObjects.Common.UserFavoriteMenuMaster userMenu in (FrameWork.Core.Localizer.CurrentUser.FavoriteMenus.Where(p => p.IsSelected == true).OrderBy(p => p.SortId)))
+                {
+                    <a class="favmenulink" title="@userMenu.MenuName" href="@Url.Action(userMenu.MenuAction, userMenu.MenuController, new { area = userMenu.MenuArea, Token = SaraiBooking.App_Start.Common.EncryptData("PAGE_NUMBER=1`MENU_ID=" + userMenu.MenuId + "`" + userMenu.ParameterList) })"><i class="fa fa-angle-double-right"></i>@userMenu.MenuName</a>
+                }
+            </div>
+            <div class="sideclear"></div>
+        </div>
+    </div>
+
+
+
+    <nav id="context-menu" class="context-menu">
+        <ul class="context-menu__items">
+            <li class="context-menu__item">
+                <a href="@Url.Action("AddToFavorite", "UserMaster", new { area = "Common" })" class="context-menu__link" data-action="View"><i class="fa fa-bookmark"></i> Add to Favorite</a>
+            </li>
+        </ul>
+    </nav>
+
+    <div class="alert alert-success alert-dismissible" role="alert" id="alert-box-success" style="display:none;position: absolute;color:white;left: 50%;top: 20%;-webkit-transform: translate(-50%, -50%);transform: translate(-50%, -50%);z-index:200000000;">
+        <a href="#" class="close" id="close-success">&times;</a>
+        <p id="message-success"></p>
+    </div>
+
+    <div class="alert alert-danger alert-dismissible" role="alert" id="alert-box-danger" style="display:none;position: absolute;color:white;left: 50%;top: 20%;-webkit-transform: translate(-50%, -50%);transform: translate(-50%, -50%);z-index:200000000;">
+        <a href="#" class="close" id="close-danger">&times;</a>
+        <p id="message-danger"></p>
+    </div>
+
+
+    <!-- jQuery -->
+
+
+    <!-- Bootstrap -->
+    <script src="@Url.Content("~/Content/css/bootstrap/dist/js/bootstrap.min.js")"></script>
+    <!-- FastClick -->
+    <script src="@Url.Content("~/Content/css/fastclick/lib/fastclick.js")"></script>
+    <!-- NProgress -->
+    @*<script src="@Url.Content("~/Content/css/nprogress/nprogress.js")"></script>*@
+    <!-- bootstrap-progressbar -->
+    @*<script src="@Url.Content("~/Content/css/bootstrap-progressbar/bootstrap-progressbar.min.js")"></script>*@
+    <!-- iCheck -->
+    <script src="~/Content/css/iCheck/icheck.min.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="@Url.Content("~/Content/js/moment/moment.min.js")"></script>
+    <script src="@Url.Content("~/Content/js/datepicker/daterangepicker.js")"></script>
+    <!-- bootstrap-wysiwyg -->
+    <script src="~/Content/css/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+    <script src="~/Content/css/jquery.hotkeys/jquery.hotkeys.js"></script>
+    <script src="~/Content/css/google-code-prettify/src/prettify.js"></script>
+    <!-- jQuery Tags Input -->
+    <script src="~/Content/css/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+    <!-- Switchery -->
+    <script src="~/Content/css/switchery/dist/switchery.min.js"></script>
+    <!-- Select2 -->
+    <script src="~/Content/css/select2/dist/js/select2.full.min.js"></script>
+    <!-- Parsley -->
+    <script src="~/Content/css/parsleyjs/dist/parsley.min.js"></script>
+    <!-- Autosize -->
+    <script src="~/Content/css/autosize/dist/autosize.min.js"></script>
+    <!-- jQuery autocomplete -->
+    @*<script src="~/Content/css/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>*@
+    <!-- starrr -->
+    <script src="~/Content/css/starrr/dist/starrr.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="~/Content/css/build/js/custom.min.js"></script>
+    <!-- Common Functions -->
+    <script src="~/Content/js/CommonFunctions.js"></script>
+    <script src="@Url.Content("~/Content/js/handlebars-v4.0.5.js")"></script>
+
+    <script src="~/scripts/tinymce/tinymce.min.js"></script>
+    <!-- Script to wire up your TinyMCE editor -->
+    <script type="text/javascript">
+        // Initialize your tinyMCE Editor with your preferred options
+        tinyMCE.init({
+            // General options
+            //max_chars: "3000",
+            mode: "textareas",
+            statusbar: true,
+            editor_selector: "mceEditor",
+            height: 300,
+            menubar: false,
+            plugins: "link autolink autoresize charmap searchreplace advlist image imagetools lists table textcolor hr pagebreak visualchars wordcount directionality spellchecker insertdatetime",
+            style_formats_merge: true,
+            style_formats:[
+            {
+             title: "Headers",
+             items: [
+               {title: "Header 1",format: "h1"},
+               {title: "Header 2",format: "h2"},
+               {title: "Header 3",format: "h3"},
+               {title: "Header 4",format: "h4"},
+               {title: "Header 5",format: "h5"},
+               {title: "Header 6",format: "h6"}
+             ]
+            },
+            {
+                title: "Inline",
+                items: [
+                    { title: "Bold", icon: "bold", format: "bold" },
+                    { title: "Italic", icon: "italic", format: "italic" },
+                    { title: "_Underline", icon: "underline", format: "underline" },
+                    { title: "Strikethrough", icon: "strikethrough", format: "strikethrough" },
+                    { title: "Superscript", icon: "superscript", format: "superscript" },
+                    { title: "Subscript", icon: "subscript", format: "subscript" },
+                    { title: "Code", icon: "code", format: "code" }
+                ]
+            },
+            {
+                title: "_Blocks",
+                items: [
+                    { title: "Paragraph", format: "p" },
+                    { title: "Blockquote", format: "blockquote" },
+                    { title: "Div", format: "div" },
+                    { title: "Pre", format: "pre" }
+                ]
+            },
+            {
+                title: "_Alignment",
+                items: [
+                    { title: "Left", icon: "alignleft", format: "alignleft" },
+                    { title: "Center", icon: "aligncenter", format: "aligncenter" },
+                    { title: "Right", icon: "alignright", format: "alignright" },
+                    { title: "Justify", icon: "alignjustify", format: "alignjustify" }
+                ]
+            },
+            {
+                title: "Font Family",
+                items: [
+                    {title: 'Arial', inline: 'span', styles: { 'font-family':'arial'}},
+                    {title: 'Book Antiqua', inline: 'span', styles: { 'font-family':'book antiqua'}},
+                    {title: 'Comic Sans MS', inline: 'span', styles: { 'font-family':'comic sans ms,sans-serif'}},
+                    {title: 'Courier New', inline: 'span', styles: { 'font-family':'courier new,courier'}},
+                    {title: 'Georgia', inline: 'span', styles: { 'font-family':'georgia,palatino'}},
+                    {title: 'Helvetica', inline: 'span', styles: { 'font-family':'helvetica'}},
+                    {title: 'Impact', inline: 'span', styles: { 'font-family':'impact,chicago'}},
+                    {title: 'Open Sans', inline: 'span', styles: { 'font-family':'Open Sans'}},
+                    {title: 'Symbol', inline: 'span', styles: { 'font-family':'symbol'}},
+                    {title: 'Tahoma', inline: 'span', styles: { 'font-family':'tahoma'}},
+                    {title: 'Terminal', inline: 'span', styles: { 'font-family':'terminal,monaco'}},
+                    {title: 'Times New Roman', inline: 'span', styles: { 'font-family':'times new roman,times'}},
+                    {title: 'Verdana', inline: 'span', styles: { 'font-family':'Verdana'}}
+                ]
+            },
+            {
+                title: "Font Size",
+                items: [
+                    {title: '8pt', inline:'span', styles: { fontSize: '12px', 'font-size': '8px' } },
+                    {title: '10pt', inline:'span', styles: { fontSize: '12px', 'font-size': '10px' } },
+                    {title: '12pt', inline:'span', styles: { fontSize: '12px', 'font-size': '12px' } },
+                    {title: '14pt', inline:'span', styles: { fontSize: '12px', 'font-size': '14px' } },
+                    { title: '16pt', inline: 'span', styles: { fontSize: '12px', 'font-size': '16px' } }
+                ]
+            }
+            ],
+            toolbar: "undo redo insert | styleselect | bold italic underline strikethrough superscript subscript | forecolor  backcolor | alignleft aligncenter alignright alignjustify | link image hr pagebreak | bullist numlist outdent indent | table | fontselect fontsizeselect | ltr rtl | charmap spellchecker | insertdatetime | visualchars | searchreplace | removeformat",
+            insertdatetime_formats: ["%b %d, %Y", "%H:%M:%S", "%Y-%m-%d", "%I:%M:%S %p", "%D"]
+        });
+    </script>
+
+    <script src="~/Scripts/jquery.Jcrop.min.js"></script>
+
+    <script src="~/Content/js/jquery.side-slider.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('#sideslider').sideSlider();
+    });
+    </script>
+
+    <script src="~/Content/js/ContextMenu.js"></script>
+
+    <script>
+        //$(".star.glyphicon").click(function () {
+        //    $(this).toggleClass("glyphicon-star glyphicon-star-empty");
+        //});
+
+        $(document).ready(function ($) {
+            $('.favstar').on("click", function () {
+                var menuid = $(this).data('menuid');
+                var menuname = $(this).data('menuname');
+                var isfavoritemenu = $(this).data('isfavoritemenu');
+
+                document.getElementById('alert-box-success').style.display = "none";
+                document.getElementById('alert-box-danger').style.display = "none";
+
+                $.ajax({
+                    type: "POST",
+                    data: { "menuId": menuid, "menuName" : menuname,  "isFavoriteMenu": isfavoritemenu },
+                    url: "/Base/UpdateUserFavoriteMenu",
+                    dataType: 'json',
+                    cache: false,
+                    success: function (response) {
+                        if (response != null && response.success) {
+                            document.getElementById('alert-box-success').style.display = "block";
+                            $('#message-success').html(response.responseText);
+                            $("#loader").hide();
+                            window.setTimeout(function () {
+                                $(".alert-success").fadeTo(300, 0).slideUp(300, function () {
+                                    $(this).remove();
+                                    location.reload(true);
+                                });
+                            }, 1000);
+                            document.getElementById('alert-box-danger').style.display = "none";
+
+                        } else {
+                            // DoSomethingElse()
+                            //alert('validation' + response.responseText);
+                            document.getElementById('alert-box-danger').style.display = "block";
+                            document.getElementById('alert-box-success').style.display = "none";
+                            $('#message-danger').html(response.responseText);
+                            $("#loader").hide();
+                        }
+                    }, error: function (response) {
+                        //alert('error' + response.responseText);
+                        document.getElementById('alert-box-danger').style.display = "block";
+                        document.getElementById('alert-box-success').style.display = "none";
+                        $('#message-danger').html(response.responseText);
+                        $("#loader").hide();
+                    }
+                });
+
+                $("#close-success").click(function () {
+                    document.getElementById('alert-box-success').style.display = "none";
+                });
+
+                $("#close-danger").click(function () {
+                    document.getElementById('alert-box-danger').style.display = "none";
+                });
+            });
+        });
+
+    </script>
+
+    <script>
+        $("#loader").css("display", "block");
+        $("body").css("overflow-y", "hidden");
+        $(document).ready(function () {
+            $("#loader").css("display", "none");
+            $("body").css("overflow-y", "scroll");
+        });
+    </script>
+
+
+    <script type="text/javascript" src="~/Content/js/fancybox/jquery.fancybox.pack.js"></script>
+    <script type="text/javascript" src="~/Content/js/fancybox/fancybox.js"></script>
+    <script src="~/Content/js/TweenMax.min.js"></script>
+    <script src="~/Content/js/index.js"></script>
+    <script src="~/Content/js/bootbox.min.js"></script>
+    <script src="~/Scripts/jquery-editable-select.min.js"></script>
+
+    <script src="~/Content/js/printThis.js"></script>
+    <script src="~/Content/js/underscore-min.js"></script>
+    <script src="~/Content/vue/common.js"></script>
+
+    <script src="~/Content/js/picktim.js"></script>
+    <script src="~/Scripts/bootstrap-datetimepicker.min.js"></script>
+
+   
+    <script>
+        $(document).ready(function () {
+
+            var isSuperAdmin ='@FrameWork.Core.Localizer.CurrentUser.IsSuperAdmin';
+            var isSeniorAdmin = '@FrameWork.Core.Localizer.CurrentUser.IsSeniorAdmin';
+
+            if(isSuperAdmin.toLowerCase() == 'false' && isSeniorAdmin.toLowerCase() == 'false')
+            {
+                $(this).bind("contextmenu", function (e) {
+                    e.preventDefault();
+                });
+            }
+        });
+    </script>
+
+    @RenderSection("script", false)
+</body>
+</html>

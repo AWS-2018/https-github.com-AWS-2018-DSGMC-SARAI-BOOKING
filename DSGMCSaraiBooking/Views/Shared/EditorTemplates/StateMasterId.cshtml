@@ -1,0 +1,22 @@
+﻿@using System.Linq;
+@using Facade.Common
+@model int?
+@{
+    var dbContext = new CommonFacade();
+    var dataList = dbContext.GetStateList();
+    
+    var availableState = dataList.Select(u => new System.Web.Mvc.SelectListItem
+    {
+        Text = u.Name,
+        Value = u.Id.ToString(),
+        Selected = u.Id == Model
+    }).ToArray();
+}
+
+@Html.DropDownList("", availableState, optionLabel:"[Select One]", htmlAttributes: new { @class = "form-control select2", style="width:100% !important" })
+
+<script>
+    $(document).ready(function () {        
+        $("#@ViewData.TemplateInfo.GetFullHtmlFieldId(string.Empty)").kendoComboBox();
+    });
+</script>

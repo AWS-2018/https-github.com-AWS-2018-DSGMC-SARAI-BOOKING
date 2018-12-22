@@ -1,0 +1,74 @@
+﻿<html>
+<head>
+    <title>Web School Manager</title>
+    <link href="~/favicon.ico" rel="logo" />
+
+    <!-- Bootstrap -->
+    <link href="~/Content/css/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+</head>
+<body>
+    <div>
+        <div class="clearfix" style="min-height:5px !important;"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12 text-center">
+                <a title="Download Report in PDF" id="hlnkDownloadPdf" class="btn btn-xs btn-success" href="@Url.Action("DownloadReport", new { area="", Token = WebSchoolManager.App_Start.Common.EncryptData("`ContentType=PDF") })">
+                    <i class='fa fa-file-pdf-o'></i> Download in PDF
+                </a>
+
+                <a title="Download Report in EXCEL" id="hlnkDownloadExcel" class="btn btn-xs btn-danger" href="@Url.Action("DownloadReport", new { area="", Token = WebSchoolManager.App_Start.Common.EncryptData("`ContentType=EXCEL") })">
+                    <i class='fa fa-file-excel-o'></i> Download in EXCEL
+                </a>
+
+                <a title="Download Report in MS WORD" id="hlnkDownloadWord" class="btn btn-xs btn-primary" href="@Url.Action("DownloadReport", new { area="", Token = WebSchoolManager.App_Start.Common.EncryptData("`ContentType=WORD") })">
+                    <i class='fa fa-file-word-o'></i> Download in MS WORD
+                </a>
+
+            </div>
+        </div>
+
+        <div class="clearfix" style="min-height:5px !important;"></div>
+
+        <div class="row">
+            <div class="divPDFReport col-md-12 col-sm-12 col-xs-12">
+                <object id="objPDFReport" data="@Url.Action("ViewPDFReport", new { area="", Token = WebSchoolManager.App_Start.Common.EncryptData("`ContentType=PDF") })" type="application/pdf" width="100%" height="100%">
+                    @*<embed src="@Url.Action("ViewPDFReport", new { area="", Token = WebSchoolManager.App_Start.Common.EncryptData("`ContentType=PDF") })" type="application/pdf" width="100%" height="100%">
+                            <p>This browser does not support PDFs. Please download the PDF to view it: <a target="_blank" href="@Url.Action("DownloadReport", new { area="", Token = WebSchoolManager.App_Start.Common.EncryptData("`ContentType=PDF") })">Download PDF</a>.</p>
+                        </embed>*@
+                </object>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="loader" style="margin: 0px; padding: 0px; position: fixed; right: 0px;
+                    top: 0px; width: 100%; height: 100%; background-color: #666666; z-index: 30001;
+                    opacity: .8; filter: alpha(opacity=70);display:none">
+        <p style="position: absolute;color:white;left: 50%;top: 50%;-webkit-transform: translate(-50%, -50%);transform: translate(-50%, -50%);">
+            <img src="~/Content/Images/ajax-loader.gif">&nbsp;&nbsp;&nbsp;<span id="loaderText"><b>Loading Report. Please wait for few moments...</b></span>
+        </p>
+    </div>
+
+    <script src="~/Content/css/jquery/dist/jquery.min.js"></script>
+    <script>
+        $("document").ready(function () {
+
+            $("#loader").show();
+
+            $('#hlnkDownloadPdf').hide();
+            $('#hlnkDownloadExcel').hide();
+            $('#hlnkDownloadWord').hide();
+
+            $('.divPDFReport object').load(function () {
+                //var obj = $('.main object')[0].contentDocument.children;
+                //console.log(obj);
+                $('#hlnkDownloadPdf').show();
+                $('#hlnkDownloadExcel').show();
+                $('#hlnkDownloadWord').show();
+
+                $("#loader").hide();
+            });
+        });
+    </script>
+</body>
+</html>

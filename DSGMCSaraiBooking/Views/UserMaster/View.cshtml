@@ -1,0 +1,101 @@
+﻿@model BusinessObjects.Common.UserMaster
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<form action="@Url.Action("Edit", "UserMaster")" method="post" data-parsley-validate class="form-horizontal form-label-left">
+    <div class="right_col" role="main">
+        <div class="">
+
+            <div class="clearfix"></div>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+                        <div class="x_title">
+                            <h2>View User</h2>
+
+                            <ul class="nav navbar-right panel_toolbox">
+                                <li>
+                                    <button type="button" class="btn btn-primary" onclick="location.href = '@Url.Action("Index", "UserMaster", new { Token = WebSchoolManager.App_Start.Common.EncryptData("`PAGE_NUMBER=" + ViewBag.PageNumber) })'">Back</button>
+                                </li>
+                            </ul>
+
+                            <div class="clearfix"></div>
+                        </div>
+
+                        @ViewBag.ErrorMessage
+
+                        <div class="x_content">
+                            <br />
+
+                            @Html.HiddenFor(model => model.RowVersion)
+                            @Html.HiddenFor(model => model.CheckSumValue)
+                            @Html.HiddenFor(model => model.IsActive)
+                            @Html.HiddenFor(model => model.Id)
+                            @Html.HiddenFor(model => model.GUID)
+                            @Html.HiddenFor(model => model.Password)
+
+                            <input type="hidden" id="hdnPageNumber" name="hdnPageNumber" value="@ViewBag.PageNumber" />
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Username <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(model => model.Name, new { disabled = "disabled", autocomplete = "off", maxlength = 50, @class = "form-control col-md-7 col-xs-12 text-uppercase" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Email Id <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(model => model.EmailId, new { disabled = "disabled", autocomplete = "off", maxlength = 100, @class = "form-control col-md-7 col-xs-12 text-lowecase" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Mobile No. <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(model => model.MobileNo, new { disabled = "disabled", autocomplete = "off", maxlength = 10, onkeydown = "return PositiveNumsInt(event);", @class = "form-control col-md-7 col-xs-12" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Remarks
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextAreaFor(model => model.Remarks, new { disabled = "disabled", autocomplete = "off", maxlength = 500, @class = "form-control col-md-7 col-xs-12" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Page Size <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(model => model.PageSize, new { disabled = "disabled", autocomplete = "off", maxlength = 3, onkeydown = "return PositiveNumsInt(event);", @class = "form-control col-md-7 col-xs-12" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                                    Date Format <span class="required">*</span>
+                                </label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    @Html.TextBoxFor(model => model.DateFormat, new { disabled = "disabled", autocomplete = "off", maxlength = 20, @class = "form-control col-md-7 col-xs-12" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
